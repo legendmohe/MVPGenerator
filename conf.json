@@ -1,0 +1,14 @@
+{
+    "package": "com.lehome.demo",
+    "author": "legendmohe",
+    "target": [
+        {
+            "name": "demo",
+            "gen_type": "Activity"
+        },
+        {
+            "name": "test",
+            "gen_type": "Activity"
+        }
+    ]
+}
