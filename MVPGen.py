@@ -13,7 +13,7 @@ THIS_DIR = os.path.dirname(os.path.abspath(__file__))
 OUTPUT_DIR = os.path.join(THIS_DIR, 'output')
 TEMP_DIR = os.path.join(THIS_DIR, 'template')
 MVP_DIR = os.path.join(OUTPUT_DIR, 'mvp') 
-ENV = Environment(loader=FileSystemLoader(THIS_DIR),
+ENV = Environment(loader=FileSystemLoader(TEMP_DIR),
                          trim_blocks=True)
 
 def mkdir_p(path):
@@ -26,8 +26,7 @@ def mkdir_p(path):
 
 def create_MPVView(package_name, author, ctime):
     out_path = os.path.join(MVP_DIR, 'MVPView.java')
-    temp_path = os.path.join(TEMP_DIR, 'MVPView.java')
-    result = ENV.get_template(temp_path).render(
+    result = ENV.get_template('MVPView.java').render(
         package_name=package_name,
         author=author,
         create_time=ctime
@@ -39,8 +38,7 @@ def create_MPVView(package_name, author, ctime):
 
 def create_MPVPresenter(package_name, author, ctime):
     out_path = os.path.join(MVP_DIR, 'MVPPresenter.java')
-    temp_path = os.path.join(TEMP_DIR, 'MVPPresenter.java')
-    result = ENV.get_template(temp_path).render(
+    result = ENV.get_template('MVPPresenter.java').render(
         package_name=package_name,
         author=author,
         create_time=ctime
@@ -52,8 +50,7 @@ def create_MPVPresenter(package_name, author, ctime):
 
 def create_target_view(package_name, author, date_str, name):
     view_name = name.capitalize() + 'View'
-    temp_path = os.path.join(TEMP_DIR, 'TemplateView.java')
-    result = ENV.get_template(temp_path).render(
+    result = ENV.get_template('TemplateView.java').render(
         package_name=package_name,
         author=author,
         create_time=date_str,
@@ -70,8 +67,7 @@ def create_target_view(package_name, author, date_str, name):
 
 def create_target_presenter(package_name, author, date_str, name, vname):
     presenter_name = name.capitalize() + 'Presenter'
-    temp_path = os.path.join(TEMP_DIR, 'TemplatePresenter.java')
-    result = ENV.get_template(temp_path).render(
+    result = ENV.get_template('TemplatePresenter.java').render(
         package_name=package_name,
         author=author,
         create_time=date_str,
@@ -142,3 +138,4 @@ if __name__ == '__main__':
     parser.add_argument("conf", help="conf file")
     args = parser.parse_args()
     main(args.conf)
+
