@@ -12,28 +12,15 @@
  * limitations under the License.
  */
 
-package {{package_name}}.presenters;
+package {{package_name}}.mvp.views;
 
-import {{package_name}}.mvp.presenters.MvpBasePresenter;
-import {{package_name}}.views.{{view_name}};
+import android.view.View;
 
 /**
  * Created by {{author}} on {{create_time}}.
  */
-public class {{presenter_name}} extends MvpBasePresenter<{{view_name}}> {
-    protected static final String TAG = "{{presenter_name}}";
+public interface MvpBaseView {
+    public void setupViews(View rootView);
 
-    public {{presenter_name}}({{view_name}} view) {
-        super(view);
-    }
-
-    @Override
-    public void start() {
-        Log.d(TAG, "{{presenter_name}} start.");
-    }
-
-    @Override
-    public void stop() {
-        Log.d(TAG, "{{presenter_name}} stop.");
-    }
+    public android.content.Context getContext();
 }

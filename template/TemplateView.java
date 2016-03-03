@@ -17,6 +17,6 @@ package {{package_name}}.mvp.views;
 /**
  * Created by {{author}} on {{create_time}}.
  */
-public interface {{view_name}} extends MVPView {
+public interface {{view_name}} extends MvpBaseView {
 
 }

@@ -12,28 +12,32 @@
  * limitations under the License.
  */
 
-package {{package_name}}.presenters;
+package {{package_name}}.mvp.presenters;
 
-import {{package_name}}.mvp.presenters.MvpBasePresenter;
-import {{package_name}}.views.{{view_name}};
+import java.lang.ref.WeakReference;
 
 /**
  * Created by {{author}} on {{create_time}}.
  */
-public class {{presenter_name}} extends MvpBasePresenter<{{view_name}}> {
-    protected static final String TAG = "{{presenter_name}}";
+public abstract class MvpBasePresenter<T> {
 
-    public {{presenter_name}}({{view_name}} view) {
-        super(view);
+    private WeakReference<T> mView;
+    
+    public MvpBasePresenter(T view) {
+        mView = new WeakReference<T>(view);
     }
 
-    @Override
-    public void start() {
-        Log.d(TAG, "{{presenter_name}} start.");
+    public boolean isViewAttached() {
+        return mView != null && mView.get() != null;
     }
 
-    @Override
-    public void stop() {
-        Log.d(TAG, "{{presenter_name}} stop.");
+    public T getView() {
+        if (mView != null) {
+            return mView.get();
+        }
+        return null;
     }
+
+    public abstract void start();
+    public abstract void stop();
 }

@@ -1,13 +1,9 @@
 {
-    "package": "com.lehome.demo",
+    "package": "bt.samsung.com.sensormodule",
     "author": "legendmohe",
     "target": [
         {
-            "name": "demo",
-            "gen_type": "Activity"
-        },
-        {
-            "name": "test",
+            "name": "Main",
             "gen_type": "Activity"
         }
     ]

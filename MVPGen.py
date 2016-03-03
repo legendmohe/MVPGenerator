@@ -25,8 +25,8 @@ def mkdir_p(path):
         else: raise
 
 def create_MPVView(package_name, author, ctime):
-    out_path = os.path.join(MVP_DIR, 'MVPView.java')
-    result = ENV.get_template('MVPView.java').render(
+    out_path = os.path.join(MVP_DIR, 'MvpBaseView.java')
+    result = ENV.get_template('MvpBaseView.java').render(
         package_name=package_name,
         author=author,
         create_time=ctime
@@ -34,11 +34,11 @@ def create_MPVView(package_name, author, ctime):
     with open(out_path, 'w') as f:
         f.write(result)
 
-    print "create MVPView in path:", out_path
+    print "create MvpBaseView in path:", out_path
 
 def create_MPVPresenter(package_name, author, ctime):
-    out_path = os.path.join(MVP_DIR, 'MVPPresenter.java')
-    result = ENV.get_template('MVPPresenter.java').render(
+    out_path = os.path.join(MVP_DIR, 'MvpBasePresenter.java')
+    result = ENV.get_template('MvpBasePresenter.java').render(
         package_name=package_name,
         author=author,
         create_time=ctime
@@ -46,7 +46,7 @@ def create_MPVPresenter(package_name, author, ctime):
     with open(out_path, 'w') as f:
         f.write(result)
 
-    print "create MVPPresenter in path:", out_path
+    print "create MvpBasePresenter in path:", out_path
 
 def create_target_view(package_name, author, date_str, name):
     view_name = name.capitalize() + 'View'
